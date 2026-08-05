@@ -1,17 +1,55 @@
-<!DOCTYPE html>
+</html>
+!DOCTYPE html>
 <html>
 <head>
-  <title>Mi Juego Retro</title>
-  <style>body { margin: 0; background: #000; }</style>
+<style>
+  body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #111; }
+  #game-container { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
+  #game { width: 100%; height: 100%; max-width: 100%; }
+</style>
 </head>
 <body>
+<div id="game-container">
   <div id="game"></div>
-  <script>
-    EJS_player = "#game";
-    EJS_core = "gba"; // Tu consola
-    EJS_gameUrl = "https://github.com/GabinAndino/latabernadestitch/raw/refs/heads/main/Legend%20of%20Zelda,%20The_%20The%20Minish%20Cap.zip"; // ROM alojada en este repositorio
-    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-  </script>
-  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</div>
+
+<script>
+  // 1. Configuración Básica
+  EJS_player = "#game";
+  EJS_core = "gba"; // Pokémon Fire Red es de Game Boy Advance
+  EJS_gameName = "Pokemon Fire Red";
+  EJS_color = "#FFCB05"; // Color amarillo Pokémon (opcional)
+  
+  // 2. URL DE LA ROM (¡IMPORTANTE! Debes usar la tuya propia en GitHub/Netlify)
+  // Classroom6x usa una URL interna, tú debes poner la tuya directa que termine en .zip
+  EJS_gameUrl = "https://github.com/GabinAndino/latabernadestitch/raw/refs/heads/main/Legend%20of%20Zelda,%20The_%20The%20Minish%20Cap.zip";
+  
+  EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+
+  // 3. Controles Preconfigurados (Estándar GBA)
+  // Esta es la configuración que suelen usar estos sitios para que funcione bien
+  EJS_defaultControls = {
+    0: { // Jugador 1
+      0: { 'value': 'x', 'value2': 'BUTTON_1' },       // A
+      1: { 'value': 'z', 'value2': 'BUTTON_2' },       // B
+      2: { 'value': 'a', 'value2': 'BUTTON_3' },       // X (Lupa/Correr en algunos)
+      3: { 'value': 's', 'value2': 'BUTTON_4' },       // Y
+      4: { 'value': 'ArrowUp', 'value2': 'DPAD_UP' },
+      5: { 'value': 'ArrowDown', 'value2': 'DPAD_DOWN' },
+      6: { 'value': 'ArrowLeft', 'value2': 'DPAD_LEFT' },
+      7: { 'value': 'ArrowRight', 'value2': 'DPAD_RIGHT' },
+      8: { 'value': 'Enter', 'value2': 'START' },      // Start
+      9: { 'value': 'Shift', 'value2': 'SELECT' },     // Select
+      10: { 'value': 'q', 'value2': 'LEFT_TOP_SHOULDER' }, // L
+      11: { 'value': 'w', 'value2': 'RIGHT_TOP_SHOULDER' }  // R
+    },
+    1: {}, 2: {}, 3: {}
+  };
+
+  // 4. Opciones de rendimiento típicas
+  EJS_startOnLoaded = true; // Iniciar automáticamente
+  EJS_volume = 0.8;
+</script>
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 </body>
 </html>
